@@ -4,25 +4,21 @@ using namespace std;
 // by inforkc
 void inforkc()
 {
-    int a, b;
-    cin >> a >> b;
-    unordered_map<int, int> m;
-    for (int i = 1; i <= a; i++)
+    int n, b;
+    cin >> n >> b;
+    vector<int> v(n + 1);
+    map<int, int> m;
+    for (int i = 1; i <= n; i++)
+        cin >> v[i];
+    for (int i = 1; i <= n; i++)
     {
-        int k;
-        cin >> k;
-        m[k] = i;
-    }
-    for (auto i : m)
-    {
-        if (m.find(b - i.first) != m.end())
+        int k = v[i];
+        if (m.count(b - k))
         {
-            if (i.second != m[b - i.first])
-            {
-                cout << i.second << " " << m[b - i.first] << endl;
-                return;
-            }
+            cout << i << " " << m[b - k];
+            return;
         }
+        m[k] = i;
     }
     cout << "IMPOSSIBLE";
 }
