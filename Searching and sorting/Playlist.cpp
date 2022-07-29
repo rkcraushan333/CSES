@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <set>
 using namespace std;
 
@@ -9,7 +10,7 @@ int main()
     vector<int> v(n);
     for (int i = 0; i < n; i++)
         cin >> v[i];
-    unordered_set<int> h;
+    set<int> h;
     int i = 0, j = 0, res = 1;
     while (j < n)
     {
@@ -20,8 +21,9 @@ int main()
                 h.erase(v[i++]);
             }
         }
-        m.insert(v[j++]);
-        res = max(res, h.size());
+        h.insert(v[j++]);
+        if (h.size() > res)
+            res = h.size();
     }
     cout << res;
     return 0;
